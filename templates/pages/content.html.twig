@@ -17,6 +17,7 @@
                     </tr>
                     </thead>
                     <tbody>
+                    <!--boucle sur la liste des prénoms-->
                     {% for firstname in firstnames %}
                         <tr>
                             <th class="border-white">{{ firstname.firstname }}</th>
@@ -41,6 +42,7 @@
                     </tbody>
                 </table>
             </div>
+                <!--système de pagination-->
             <div class="space">
                 {{ knp_pagination_render(firstnames) }}
             </div>

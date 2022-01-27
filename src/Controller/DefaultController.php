@@ -80,8 +80,7 @@ class DefaultController extends AbstractController
      */
     public function displayfirstname(FirstnameRepository $firstnameRepository, Request $request,PaginatorInterface $paginator, EntityManagerInterface $em): Response
     {
-
-
+        /* affichage de kla liste des prénoms + système de pagination*/
         $datas = $firstnameRepository->findAll();
 
         $firstnames = $paginator->paginate(
