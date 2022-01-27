@@ -1,0 +1,32 @@
+{% extends 'layout/layout.html.twig' %}
+
+{% block content %}
+    <section class="call-to-action text-white text-center" id="signup">
+        <div class="container position-relative">
+            <div class="row justify-content-center">
+                <div class="col-xl-6">
+                    <h1 class="mb-5">Votre profil</h1>
+                    <div class="img-format">
+                        {% if app.user.photo %}
+                        <img src="{{ asset('images/'~user.photo.url) }}" alt="">
+                            <p>Modifiez l'image de profile</p>
+                        {% else %}
+                        <img src="{{ asset('images/avatar.jpeg') }}" alt="">
+                            <p>Ajoutez une image de profil</p>
+                        {% endif %}
+                    </div>
+                    {{ form_start(userForm) }}
+                    {{ form_end(userForm) }}
+
+                        <tr>
+                            <th class="border-white"></th>
+                            <th class="border-white"></th>
+                            <th class="last-border-white border-white"></th>
+                        </tr>
+
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

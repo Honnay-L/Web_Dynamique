@@ -1,0 +1,22 @@
+{% extends 'layout/layout.html.twig' %}
+
+{% block content %}
+    <section class="call-to-action text-white text-center" id="signup">
+        <div class="container position-relative">
+            <div class="row justify-content-center">
+                <div class="col-xl-6">
+                    <h1 class="mb-5">formulaire d'ajout de prénom</h1>
+                    {{ form_start(AddfirstnameForm, { attr: { class : 'form-subscribe'}}) }}
+                    {{ form_label(AddfirstnameForm.firstname, 'Prénom') }}
+                    {{ form_widget(AddfirstnameForm.firstname, { 'attr': {'class': 'form-control form-control-lg'} }) }}
+                    {{ form_label(AddfirstnameForm.origin, 'Origin') }}
+                    {{ form_widget(AddfirstnameForm.origin, { 'attr': {'class': 'form-control form-control-lg'} }) }}
+                    {{ form_label(AddfirstnameForm.description, 'Signification') }}
+                    {{ form_widget(AddfirstnameForm.description, { 'attr': {'class': 'form-control form-control-lg'} }) }}
+                    {{ form_widget(AddfirstnameForm.submit, { 'attr': {'class': 'btn btn-primary btn-lg'} }) }}
+                    {{ form_end(AddfirstnameForm) }}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

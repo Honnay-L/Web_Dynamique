@@ -1,0 +1,53 @@
+{% extends 'layout/layout.html.twig' %}
+
+{% block content %}
+    <section class="call-to-action text-white text-center" id="signup">
+        <div class="container position-relative">
+            <div class="row justify-content-center">
+            <h1>Liste des prénoms</h1>
+            <div class="space row">
+                <table>
+                    <thead>
+                    <tr>
+                        <th class="col-lg-2 border-white">Prénom</th>
+                        <th class="col-lg-2 border-white">Origine</th>
+                        <th class="col-lg-5 border-white">Signification</th>
+                        <th class="col-lg-1  border-white last-border">Like</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for firstname in firstnames %}
+                        <tr>
+                            <th class="border-white">{{ firstname.firstname }}</th>
+                            <th class="border-white">{{ firstname.origin }}</th>
+                            <th class="border-white">{{ firstname.description }}</th>
+                            <th class="last-border border-white">
+                                {% if app.user %}
+                                    <a href="{{ path('firstname_like', {'id': firstname.id}) }}" class="js-like">
+                                        {% if app.user and firstname.isLikedByUser(app.user) %}
+                                            <i class="bi bi-hand-thumbs-up-fill"></i>
+                                        {% else %}
+                                            <i class="bi bi-hand-thumbs-up"></i>
+                                        {% endif %}
+                                        <span class="js-likes">{{ firstname.likes | length }}</span>
+                                    </a>
+                                {% else %}
+                                    <i class="bi bi-hand-thumbs-up">{{ firstname.likes | length }}</i>
+                                {% endif %}
+                            </th>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="space">
+                {{ knp_pagination_render(firstnames) }}
+            </div>
+                <div class="space row separator-form">
+                    {% include 'pages/bug.html.twig' %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

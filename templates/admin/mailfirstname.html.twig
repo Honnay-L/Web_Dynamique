@@ -1,0 +1,39 @@
+{% extends 'layout/layout.html.twig' %}
+
+{% block content %}
+    <section class="call-to-action text-white text-center" id="signup">
+        <div class="container position-relative">
+            <div class="row justify-content-center">
+                <h1 class="mb-5">Liste des demandes d'ajouts de prénom</h1>
+                <div class="container">
+                    <div class="row">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th class="col-lg-2 border-white">Date</th>
+                                <th class="col-lg-2 border-white">Prénom</th>
+                                <th class="col-lg-2 border-white">Origine</th>
+                                <th class="col-lg-4 border-white">Signification</th>
+                                <th class="col-lg-1 border-white">acceptez l'ajout</th>
+                                <th class="col-lg-1 last-border-white border-white">refusez l'ajout</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for addfirstname in addfirstnames %}
+                            <tr>
+                                <th class="border-white">{{ addfirstname.date | date('d-m-Y') }}</th>
+                                <th class="border-white">{{ addfirstname.firstname }}</th>
+                                <th class="border-white">{{ addfirstname.origin }}</th>
+                                <th class="last-border-white border-white">{{ addfirstname.description }}</th>
+                                <th class="last-border-white border-white"><a href="{{ path('firstname_add', {'id': addfirstname.id}) }}"><i class="bi bi-check-square-fill"></i></a></th>
+                                <th class="last-border-white border-white"><a href="{{ path('firstname_delete', {'id': addfirstname.id}) }}"><i class="bi bi-x-square-fill"></i></a></th>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
